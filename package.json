@@ -1,7 +1,7 @@
 {
   "name": "dsh-bubble-quote-ink",
-  "version": "0.1.0",
-  "description": "对话气泡台词着色：仅「」内的台词跟随角色色 --bubble-color 并加字重，括号动作保持原色。纯客户端 CSS 变量覆盖 + DOM 后处理，不改 DSHT 运行时。",
+  "version": "0.4.0",
+  "description": "对话气泡台词着色：仅「」内的台词跟随角色色 --bubble-color 并加字重，括号动作保持原色；未配置颜色的角色按名字哈希获得稳定伪随机气泡色；无素材/无条目角色的头像占位统一做渐变艺术字+色环处理（纯客户端 CSS 变量覆盖 + DOM 后处理，不改 DSHT 运行时）。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
