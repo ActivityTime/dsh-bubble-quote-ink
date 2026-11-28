@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-11-28 — v0.9.9（合成气泡 + 标准 API 提示词段落）
+
+### 新增
+- **`$bubble[...]` 合成气泡**：`$bubble[handle|名字|表情|动作|台词|语音台词]` 六段全部必填、任一段留空即不识别；
+  插件按宿主 `BubbleRow` 的同款类名渲染，台词自动包 `「」`、动作自动包 `（）`，`*…*` 按内心独白样式。
+- **读卡片对话气泡素材包**：头像按 handle/名字匹配，再按「表情」取该情绪差分（`emotions[id].label` ↔ `moods[id]`），
+  依次退 `moods.default` → `avatar` → 首字占位；颜色优先级为素材包 `color` > 角色表 > 名字随机色；
+  `voice`/`voiceLang` 读入并挂在 `data-dsh-bq-figure-voice`/`-lang` 上。
+- **提示词段落走标准 API**：host 侧用该会话的 `agent.ctx` 注册 `ctx.systemPrompt.section({ name, order: 190, text })`，
+  只在这一局的 system 里多一段；disposer 随 agent 卸载执行。开关只存内存，客户端经
+  `POST /api/dsh-bubble-quote-ink/synthetic`（`webServer.register`）同步。
+- 编辑台新增「合成气泡」页：默认开关、本会话开关、固定前缀提示词（只读）、注册/撤销段落、重新读取角色素材。
+
+### 修复
+- 不再触碰 `dialogue.injection`（气泡格式 / 配音规则）与 `system-append`；不写任何设置文档或宿主文件。
+- `$bubble` 行识别限定「文本节点整段就是这一行」，正文里偶然提到该语法不会被整段吞掉；
+  流式收尾（`characterData` 与新文本节点）都会重新入队扫描。
+
+### 文档
+- README 增补「合成气泡」一节、数据落点与自测说明；自测 105 → 135 项全过。
 ## 2026-11-27 — v0.4.0（随机气泡色 + 无素材头像艺术字）
 
 ### 变更

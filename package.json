@@ -1,7 +1,7 @@
 {
   "name": "dsh-bubble-quote-ink",
-  "version": "0.4.0",
-  "description": "对话气泡台词着色：仅「」内的台词跟随角色色 --bubble-color 并加字重，括号动作保持原色；未配置颜色的角色按名字哈希获得稳定伪随机气泡色；无素材/无条目角色的头像占位统一做渐变艺术字+色环处理（纯客户端 CSS 变量覆盖 + DOM 后处理，不改 DSHT 运行时）。",
+  "version": "0.9.9",
+  "description": "对话气泡编辑台：台词「」着色 + 未配色角色按名字生成稳定随机色 + 无素材头像渐变艺术字；开始页「气泡编辑」卡片——外观参数即时生效，角色颜色表只作用于没有舞台配置色的角色，气泡提示词页可整段编辑格式规则与配音规则（经官方 HTTP RPC 写 dialogue.injection，覆盖式改写）；「合成气泡」页：把 $bubble[handle|名字|表情|动作|台词|语音台词] 用官方同款样式渲染（六段必填），头像/颜色/voice 读卡片对话气泡素材包；提示词只经标准 API ctx.systemPrompt.section() 按会话注册，不写任何设置文档或宿主文件。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -12,7 +12,7 @@
   "dsh": {
     "client": {
       "platform": "web",
-      "inject": []
+      "inject": ["tavernUi"]
     }
   },
   "engines": {
